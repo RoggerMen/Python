@@ -1,0 +1,70 @@
+* Introducción a los conceptos básicos de programación: *
+
+Variables
+Espacios en memoria para almacenar datos
+Tipos de Datos
+Enteros (int): Números sin decimales.
+Flotantes (float): Números con decimales.
+Cadenas (str): Texto.
+Booleanos (bool): True o False.
+
+
+*Las variables no deben comenzar con números y no se deben usar palabras reservadas como:
+********** PALABRAS RESERVADAS ********
+class
+if
+else
+for
+********** PALABRAS RESERVADAS ********
+Pueden iniciar con _ "o" __ esto se usa mucho simbolizar que son variables de tipo privado.
+
+Algo importante a tener en cuenta es que en python se usa snake_case para el escribir variables.
+
+
+
+************* SINTAXIS Y SEMANTICA ************
+La Sintaxis y la Semántica
+
+La sintaxis y la semántica son dos conceptos fundamentales en programación. Estas son sus caracteristicas:
+
+1. Sintaxis:
+* La sintaxis se refiere a la estructura de un programa escrito en un lenguaje de programación.
+
+* Describe cómo se debe escribir el código para que sea válido según las reglas del lenguaje.
+
+* Los errores sintácticos ocurren cuando no seguimos las reglas gramaticales del lenguaje.
+
+* Por ejemplo, si olvidamos cerrar un paréntesis o escribimos mal una palabra clave, estamos cometiendo errores de sintaxis.
+
+2. Semántica:
+* La semántica se relaciona con el significado detrás del código.
+
+* Describe qué debe hacer el programa y cómo se relacionan las diferentes partes del código para lograr un objetivo.
+
+* Los errores semánticos no se detectan en tiempo de compilación, sino en tiempo de ejecución.
+
+* Por ejemplo, si asignamos un valor incorrecto a una variable o realizamos una operación lógica incorrecta, estamos cometiendo errores de semántica.
+
+
+Para ilustrar la diferencia, imagina una frase en un idioma:
+
+* Sintaxis: La gramática y la estructura de la frase (por ejemplo, "El gato está en el jardín" sigue las reglas gramaticales del español).
+
+* Semántica: El significado de la frase (en este caso, que hay un gato en el jardín).
+Es decir, mientras la sintaxis se ocupa de cómo se debe escribir el código, la semántica se ocupa de qué hace el código cuando se ejecuta.
+
+***************** IDENTACION ******************
+Este es mi aporte puesto que el tema de la indentacion al aprender Python me dio duro y espero que si alguno le pasa lo mismo puede entenderlo.
+
+Python utiliza la indentación en lugar de llaves (como en otros lenguajes como C++ o Java) para definir bloques de código. Esta elección de diseño se basa en la filosofía de Python de hacer que el código sea legible y elegante. Aquí hay algunas razones clave:
+
+1. Claridad visual: La indentación obligatoria hace que la estructura del código sea más evidente. No hay necesidad de preocuparse por las llaves o paréntesis que se abren y cierran correctamente.
+
+2. Consistencia: En Python, todos los bloques de código (como condicionales, bucles y funciones) se definen mediante la indentación. Esto garantiza una coherencia en todo el código.
+
+3. Evita errores sutiles: En lenguajes con llaves, los errores pueden ocurrir si se olvida cerrar una llave o si se coloca incorrectamente. La indentación en Python reduce la posibilidad de estos errores.
+
+4. Estilo común: La comunidad Python sigue las mismas convenciones de indentación, lo que facilita la colaboración y la lectura del código de otros.
+
+La indentación en Python es una característica distintiva que promueve la legibilidad y la consistencia. Aunque algunos pueden encontrarlo restrictivo al principio, a largo plazo, muchos desarrolladores aprecian su simplicidad y coherencia. 
+
