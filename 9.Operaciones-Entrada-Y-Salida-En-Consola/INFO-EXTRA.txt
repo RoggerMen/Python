@@ -1,0 +1,54 @@
+En Python, puedes realizar operaciones de entrada y salida en la consola de varias maneras. Estas son las más comunes:
+
+1. Entrada de Datos (Input):
+
+* Para obtener información del usuario desde el teclado, puedes usar la función input().
+
+* Esta función espera a que ingreses texto en la consola y presiones “Enter”. Luego, guarda el valor capturado en una variable.
+
+* Ejemplo:
+nombre = input("Ingresa tu nombre: ") print(f"Hola, {nombre}!")
+
+
+nombre = input("Ingresa tu nombre: ")
+print(f"Hola, {nombre}!")
+
+
+2. Salida de Datos (Output):
+
+* La función print() es la forma más común de mostrar información en la consola.
+
+* Puedes imprimir valores separados por espacios o darles formato específico.
+
+* Ejemplo:resultado = 42 print("El resultado es:", resultado)
+
+resultado = 42
+print("El resultado es:", resultado)
+
+
+3. Formato Elegante de Salida:
+
+* Puedes usar literales de cadena formateados (f-strings) o el método str.format() para controlar el formato de la salida.
+
+* Ejemplo con f-strings:year = 2022 event = "Elecciones" print(f"Resultados de las {year} {event}")
+
+
+year = 2022
+event = "Elecciones"
+print(f"Resultados de las {year} {event}")
+
+
+* Ejemplo con yes_votes = 42572654 total_votes = 85705149 percentage = yes_votes / total_votes print("{:-9}  YES votes   {:2.2%}".format(yes_votes, percentage))str.format():
+
+
+yes_votes = 42572654
+total_votes = 85705149
+percentage = yes_votes / total_votes
+print("{:-9}  YES votes   {:2.2%}".format(yes_votes, percentage))
+
+
+4. Ejecución de Comandos en la Consola:
+
+* Además de entrada y salida, puedes ejecutar comandos directamente desde tu script de Python utilizando la función os.system().
+
+* Esto te permite interactuar con el sistema operativo y ejecutar programas externos desde tu código. 

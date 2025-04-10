@@ -1,0 +1,17 @@
+
+name = input("Ingrese su nombre: ")
+print(name)
+print(type(name))
+
+# EL RESULTADO DE INGRESAR INFORMACION CON LA FUNCION "input" SIEMPRE VA A SER "class str"(string)
+# ASI QUE TENEMOS QUE REALIZAR UN ARTIFICIO QUE SE LLAMA "casting" ESTO SIGNIFICA QUE TENEMOS QUE CAMBIAR EL "TIPO DE DATO"
+# PODEMOS CAMBIAR A "int()" o "float()"
+# EL "str()(string)" NO TENDRIA PROBLEMAS SI LE COLOCAMOS UN NUMERO PORQUE LO TOMA COMO CADENA
+# ***** PERO SI COLOCAMOS ALGO CONTRARIO A LO QUE SE ESPERA EN EL "int()" POR EJEMPLO COLOCAMOS UN "str() (string)-CADENA DE TEXTO" O "float()(ej.12.56)" NOS DARA UN ERROR DE TIPO: ValueError: invalid literal for int() with base 10 
+# ESTE ERROR SIGNIFICA QUE EL CODIGO ESTABA ESPERANDO UN TIPO DE DATO Y NOSOTROS LE DIMOS OTRO
+age = int(input("Ingrese su edad: "))
+
+print(age)
+print(type(age))
+
+
