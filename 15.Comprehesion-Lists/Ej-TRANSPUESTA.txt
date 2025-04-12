@@ -1,0 +1,74 @@
+
+/*****
+    LO QUE HACE "row" CON "matrix" ES RECORRERLO Y DE ACUERDO AL "i" QUE SACA EL RESULTADO DE "3"
+    PORQUE DE LA SUBLISTA EL TAMAÑO ES DE "3" LA CUAL PARA EL "range" el "3" 
+    ES TOMANDO SOLO HASTA EL "2" LO CUAL "i" TOMARIA VALORES COMO "0","1","2" 
+    QUE SERIAN LOS QUE PASARIAN A "row[i]"
+    SOLO RECORREN DE ACUERDO AL NUMERO QUE TIENEN.
+*/
+
+transposed =[[row[i] for row in matrix] for i in range(len(matrix[0]))]
+
+
+matrix = [[1,2,3],
+          [4,5,6],
+          [7,8,9]]
+Esta es una lista de listas. Cada sublista representa una fila de la matriz.
+
+* matrix[0] es [1, 2, 3] (primera fila).
+
+* matrix[1] es [4, 5, 6] (segunda fila).
+
+* matrix[2] es [7, 8, 9] (tercera fila).
+
+
+2. El objetivo: transposición
+Queremos crear una nueva matriz llamada transposed, donde:
+
+* La primera columna de matrix (1, 4, 7) se convierta en la primera fila de transposed.
+
+* La segunda columna de matrix (2, 5, 8) se convierta en la segunda fila de transposed.
+
+* La tercera columna de matrix (3, 6, 9) se convierta en la tercera fila de transposed.
+
+
+
+3. Descomponiendo la expresión
+
+transposed = [[row[i] for row in matrix] for i in range(len(matrix[0]))]
+
+Esta es una list comprehension anidada, y la clave está en entenderla en dos niveles.
+
+
+
+***** Nivel externo: Bucle sobre las columnas *****
+
+for i in range(len(matrix[0]))
+
+
+len(matrix[0]) devuelve 3, porque la primera fila ([1, 2, 3]) tiene 3 elementos.
+
+Esto significa que i tomará los valores 0, 1 y 2, que representan los índices de las columnas.
+
+Por lo tanto, el bucle externo está iterando sobre cada columna de la matriz original.
+
+
+
+Nivel interno: Construcción de filas en transposed
+
+[row[i] for row in matrix]
+
+
+Aquí estamos creando una lista tomando el elemento i de cada fila de la matriz original (matrix).
+
+row representa cada fila de matrix, y row[i] selecciona el elemento en la columna i de esa fila.
+
+Ejemplo:
+
+* Cuando i = 0, se toman los primeros elementos de cada fila: [1, 4, 7].
+
+* Cuando i = 1, se toman los segundos elementos de cada fila: [2, 5, 8].
+
+* Cuando i = 2, se toman los terceros elementos de cada fila: [3, 6, 9].
+
+
