@@ -1,0 +1,217 @@
+Hoy
+class Vehicle: # AQUI ESTAMOS ENCAPSULANDO(ENCAPSULACIÓN) def __init__(self, brand, model, price): self.brand = brand self.model = model self.price = price self.is_available = True def sell(self): if self.is_available: self.is_available = False print(f"El vehiculo {self.brand}. Ha sido vendido") else: print(f"El vehiculo {self.brand}. No está disponible") # AQUI APLICAMOS ABSTRACCION # YA QUE A LAS VARIABLES ENCAPSULADAS SOLO PODEMOS ACCEDER MEDIANTE ESTOS METODOS QUE ESTAN ENLAZADOS A LAS VARIABLES ENCAPSULADAS def check_available(self): return self.is_available # ABSTRACCION def get_price(self): return self.price def start_engine(self): raise NotImplementedError("Este método debe ser implementado por la subclase") def stop_engine(self): raise NotImplementedError("Este método debe ser implementado por la subclase") # HERENCIA # CLASE CARRO(Car) HEREDA DE VEHICULO(Vehicle) class Car(Vehicle): # POLIMORFISMO # HACE REFERENCIA A QUE PODAMOS TENER MUCHAS FORMAS PERO CON COMPORTAMIENTOS DIFERENTES def start_engine(self): if not self.is_available: return f"El motor del coche {self.brand} está en marcha" else: return f"El coche {self.brand} no está disponible" # POLIMORFISMO def stop_engine(self): if self.is_available: return f"El motor del coche {self.brand} se ha detenido" else: return f"El coche {self.brand} No está disponible" # AQUI VEMOS OBJETOS HEREDADOS class Bike(Vehicle): # POLIMORFISMO def start_engine(self): if not self.is_available: return f"La bicibleta {self.brand} está en marcha" else: return f"La bicibleta {self.brand} no está disponible" # POLIMORFISMO def stop_engine(self): if self.is_available: return f"La bicibleta {self.brand} se ha detenido" else: return f"La bicibleta {self.brand} No está disponible" class Truck(Vehicle): # POLIMORFISMO def start_engine(self): if not self.is_available: return f"El motor del camión {self.brand} está en marcha" else: return f"El camión {self.brand} no está disponible" # POLIMORFISMO def stop_engine(self): if self.is_available: return f"El motor del camión {self.brand} se ha detenido" else: return f"El camión {self.brand} No está disponible" class Customer: def __init__(self, name): self.name = name # ALMACENAMOS CADA VEHICULO self.purchased_vehicle = [] def buy_vehicle(self, vehicle: Vehicle): if vehicle.check_available: vehicle.sell() self.purchased_vehicle.append(vehicle) else: print(f"Lo siento, {vehicle.brand} NO está disponible") def inquire_vehicle(self, vehicle: Vehicle): if vehicle.check_available(): availability = "Disponible" else: availability = "No disponible" print(f"El {vehicle.brand} está {availability} y cuesta {vehicle.get_price()}") class Dealership: def __init__(self): self.inventory = [] self.customers = [] def add_vehicles(self, vehicle: Vehicle): self.inventory.append(vehicle) print(f"El {vehicle.brand} ha sido añadido al inventario") def register_customer(self, customer: Customer): self.customers.append(customer) print(f"El cliente {customer.name} ha sido añadido") def show_available_vehicle(self): print("Vehiculos disponibles en la tienda") for vehicle in self.inventory: if vehicle.check_available(): print(f"* {vehicle.brand} por {vehicle.get_price()}") # AGREGAMOS TIPOS DE VEHICULOS car1 = Car("Toyota", "Corolla", 20000) bike1 = Bike("Yamaha", "MT-07", 7000) truck1 = Truck("Volvo", "FH16", 80000) # AGREGAMOS CLIENTE Customer1 = Customer("Rogger") # AGREGAMOS TIENDA(CONCESION - CONCESIONARIA) dealership = Dealership() dealership.add_vehicles(car1) dealership.add_vehicles(bike1) dealership.add_vehicles(truck1) # MOSTRAR VEHICULOS DISPONIBLES dealership.show_available_vehicle() # CLIENTE CONSULTA VEHICULO Customer1.inquire_vehicle(car1) # CLIENTE COMPRA UN VEHICULO Customer1.buy_vehicle(car1) # La función "Super()" en PYTHON # Sirve para acceder y llamar a METODOS de la SUPER CLASE pero desde la SUBCLASE # FACILITA la extensión de funcionalidades y acceso a METODOS de atributos de la SUPERCLASE sin tener que nombrarlas EXPLICITAMENTE lo que es especialmente util en jerarquias de CLASE COMPLEJAS class LivingBeing: def __init__(self, name): self.name = name class Person(LivingBeing): def __init__(self, name, age): super().__init__(name) self.age = age def greet(self): print(f"Hello! I'm a person. I'm {self.name} and I'm {self.age} years old") class Student(Person): def __init__(self, name, age, student_id): super().__init__(name, age) self.student_id = student_id def greet(self): super().greet() print(f"Hello, my student ID is {self.student_id}") def introduce(self): print(f"Hi, I'm {self.name}, {self.age} years old, and my student ID is {self.student_id}") student = Person("Rogger", 23) student.greet() student = Student("Roosvelt",23,"S123") student.greet() student.introduce() estoy practicando recien python y me dieron estos ejemplos en clases y quisiera saber en el tema de POO cual es mejor usar y sin tener muchas complicaciones para usar atributos heredados y metodos, quiero saber cual de los 2 es mejor sin el super() osea heredando asi por parentesis class Hijo(Padre) o con el super() explicame todo
+¡Qué genial que estás practicando Python y explorando los conceptos de la Programación Orientada a Objetos (POO)! Ambos enfoques—usar super() o simplemente heredar atributos y métodos mediante la sintaxis de la clase padre—tienen sus ventajas, dependiendo de la complejidad de la jerarquía de clases y el diseño del sistema.
+
+Usando super()
+Ventajas:
+
+Extensión de Funcionalidades:
+
+super() permite que las subclases accedan fácilmente a métodos y atributos de la superclase.
+
+Es especialmente útil en clases con jerarquías complejas o cuando necesitas reutilizar parte de la lógica de la clase padre.
+
+Mantenimiento Fácil:
+
+Al usar super(), el código es más claro y eficiente. Si cambias un método en la superclase, las subclases que lo llaman mediante super() automáticamente reflejan esos cambios.
+
+Orden de Resolución de Métodos (MRO):
+
+En Python, super() respeta el MRO (Method Resolution Order), lo que es crucial para sistemas más avanzados como las clases con herencia múltiple. Ayuda a evitar problemas potenciales como referencias cíclicas.
+
+Evita Repetición:
+
+Puedes evitar escribir código repetido al usar super() para inicializar atributos o ejecutar métodos comunes en la clase padre.
+
+Ejemplo con super():
+
+python
+class Animal:
+    def __init__(self, name):
+        self.name = name
+
+class Dog(Animal):
+    def __init__(self, name, breed):
+        super().__init__(name)
+        self.breed = breed
+Aquí, super().__init__(name) asegura que cualquier cambio en Animal también se refleje en Dog.
+
+Herencia Directa (Sin super())
+Ventajas:
+
+Simplicidad:
+
+Para jerarquías de clases sencillas, puedes heredar directamente y sobrescribir atributos o métodos sin necesidad de super(). Esto puede ser suficiente si no necesitas reutilizar lógica de la clase padre.
+
+Flexibilidad:
+
+Si quieres personalizar mucho el comportamiento de la subclase y no usar métodos de la clase padre, la herencia directa puede ser más apropiada.
+
+Desventajas:
+
+En sistemas grandes o jerarquías de clases complejas, escribir código repetitivo para inicializar atributos o llamar métodos de la clase padre puede volverse difícil de mantener.
+
+No aprovechas el MRO, lo que puede ser problemático en herencias múltiples.
+
+Ejemplo sin super():
+
+python
+class Animal:
+    def __init__(self, name):
+        self.name = name
+
+class Dog(Animal):
+    def __init__(self, name, breed):
+        self.name = name  # Herencia directa
+        self.breed = breed
+Aquí, la inicialización de name no reutiliza la lógica de la clase Animal.
+
+¿Cuál es mejor?
+Si estás trabajando en un proyecto sencillo, con pocas clases y no tienes jerarquías profundas o herencias múltiples, herencia directa (sin super()) podría ser más fácil de entender y usar.
+
+Si estás trabajando en proyectos más complejos, o quieres aprovechar la reutilización de código y mantener un diseño limpio y escalable, super() es definitivamente el camino a seguir.
+
+En tu caso, los ejemplos con super() muestran un diseño más robusto porque te permite reutilizar métodos de la clase base fácilmente y mantener el código más organizado. ¡Por lo tanto, te recomendaría usar super() en la mayoría de los casos, especialmente si planeas expandir tu proyecto en el futuro!
+
+¿Te gustaría que exploremos más ejemplos juntos para practicar? 😊
+
+dame ejemplos de lo que te refieres con MRO comparando ambas con super y sin super
+¡Claro! El MRO (Method Resolution Order) es fundamental cuando trabajas con herencia en Python, especialmente en casos de herencia múltiple. MRO define el orden en el que las clases son inspeccionadas para encontrar métodos o atributos. Cuando usas super(), se asegura de seguir este orden correctamente.
+
+Aquí tienes algunos ejemplos para comparar ambos enfoques:
+
+Ejemplo con super() y MRO
+Con super(), el MRO es seguido automáticamente. Veamos un caso con herencia múltiple:
+
+python
+class A:
+    def action(self):
+        print("Método de A")
+
+class B(A):
+    def action(self):
+        print("Método de B")
+        super().action()
+
+class C(A):
+    def action(self):
+        print("Método de C")
+        super().action()
+
+class D(B, C):  # Herencia múltiple
+    def action(self):
+        print("Método de D")
+        super().action()
+
+# Creando objeto de clase D
+obj = D()
+obj.action()
+Salida:
+
+Método de D
+Método de B
+Método de C
+Método de A
+Explicación:
+
+Cuando llamas a super().action() en cada clase, el MRO sigue el orden definido por Python: D -> B -> C -> A. Esto asegura que todas las clases en la jerarquía sean consideradas en el orden correcto.
+
+*************************************************
+
+Ejemplo sin super()
+Ahora, hagamos lo mismo pero sin usar super():
+
+python
+class A:
+    def action(self):
+        print("Método de A")
+
+class B(A):
+    def action(self):
+        print("Método de B")
+        A.action(self)  # Llamada explícita a la clase A
+
+class C(A):
+    def action(self):
+        print("Método de C")
+        A.action(self)  # Llamada explícita a la clase A
+
+class D(B, C):  # Herencia múltiple
+    def action(self):
+        print("Método de D")
+        B.action(self)  # Llamada explícita a la clase B
+        C.action(self)  # Llamada explícita a la clase C
+
+# Creando objeto de clase D
+obj = D()
+obj.action()
+Salida:
+
+Método de D
+Método de B
+Método de A
+Método de C
+Método de A
+Problema:
+
+El orden no sigue el MRO. Aquí se llama dos veces al método action de la clase A, lo cual puede ser innecesario o causar problemas en casos más complejos.
+
+Las llamadas explícitas no respetan el orden definido por el MRO y pueden ser difíciles de mantener en sistemas grandes.
+
+Ventajas de usar super() con MRO
+Evita duplicaciones: El método de la clase base no se llama múltiples veces (como en el ejemplo sin super()).
+
+Más legible: Usar super() hace que el código sea más claro y menos propenso a errores.
+
+Herencia múltiple: Es especialmente útil en casos de herencia múltiple, donde el orden correcto es crítico.
+
+*************************************************
+¿Por qué no se repite con super()?
+Cuando utilizas super(), Python sigue el MRO para determinar qué clase debe ejecutarse a continuación en la jerarquía de herencia. Esto evita llamadas redundantes al mismo método. Aquí está el truco clave: super() no llama explícitamente al método de la clase padre, sino que sigue el MRO. Esto significa que una vez que un método es ejecutado por una clase en el MRO, no se vuelve a ejecutar en otras llamadas.
+
+Por lo tanto, en el ejemplo con super():
+
+python
+Método de D
+Método de B
+Método de C
+Método de A
+El MRO ordena las clases como: D -> B -> C -> A -> object. Gracias a super(), cada clase delega automáticamente al siguiente método en la lista del MRO, y evita llamadas redundantes. Una vez que se llama a A.action(), no se vuelve a ejecutar al llegar desde C.
+
+************************************************
+Comparación con llamadas explícitas
+En el caso sin super(), donde haces llamadas explícitas:
+
+python
+Método de D
+Método de B
+Método de A
+Método de C
+Método de A
+Aquí no se sigue el MRO automáticamente, porque estás llamando directamente los métodos desde cada clase:
+
+B.action(self) llama explícitamente a A.action().
+
+C.action(self) también llama explícitamente a A.action().
+
+Como no hay ningún mecanismo que controle la repetición en las llamadas explícitas, el método A.action() se ejecuta dos veces.
+
+
+****************************************************
+Resumen del comportamiento con super()
+Respeto al MRO:
+
+super() garantiza que cada clase se llame una sola vez en el orden correcto definido por el MRO.
+
+Evita repetición:
+
+Las clases no ejecutan métodos de la misma clase padre más de una vez.
+
+Automatización:
+
+super() delega automáticamente la ejecución del siguiente método en el MRO, haciendo el código más limpio y menos propenso a errores.
+
+
+
+
+
