@@ -1,0 +1,21 @@
+2. Encapsulamiento
+
+El encapsulamiento implica restringir el acceso directo a los datos de un objeto (atributos) y permitir su manipulación solo a través de métodos específicos (getters/setters). Esto asegura que los datos sean seguros y controlados dentro de la clase.
+
+Ejemplo:
+
+python
+class CuentaBancaria:
+    def __init__(self, saldo):
+        self.__saldo = saldo  # Atributo privado (usamos "__" para encapsular)
+
+    def depositar(self, monto):
+        self.__saldo += monto
+
+    def obtener_saldo(self):
+        return self.__saldo
+
+# Acceso restringido al saldo:
+cuenta = CuentaBancaria(100)
+cuenta.depositar(50)
+print(cuenta.obtener_saldo())  # Resultado: 150

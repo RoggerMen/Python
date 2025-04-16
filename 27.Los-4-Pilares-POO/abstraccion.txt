@@ -1,0 +1,18 @@
+1. Abstracción
+
+La abstracción implica resaltar los detalles importantes y ocultar los irrelevantes. En POO, esto se refiere a diseñar clases que representen objetos del mundo real pero sin mostrar cómo funcionan internamente. La abstracción permite a los usuarios interactuar con las clases y objetos sin preocuparse por la implementación compleja.
+
+Ejemplo:
+
+python
+class Vehiculo:
+    def __init__(self, marca, modelo):
+        self.marca = marca
+        self.modelo = modelo
+    
+    def encender(self):
+        print(f"El vehículo {self.marca} {self.modelo} está encendido.")
+
+# Interactúas con el objeto sin preocuparte cómo funciona internamente:
+auto = Vehiculo("Toyota", "Corolla")
+auto.encender()

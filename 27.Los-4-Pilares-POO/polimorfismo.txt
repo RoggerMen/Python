@@ -1,0 +1,24 @@
+4. Polimorfismo
+
+El polimorfismo permite que una misma acción (método) se comporte de manera diferente según el objeto que la utiliza. Esto se logra sobrescribiendo métodos en las subclases, como en el caso anterior de herencia.
+
+Ejemplo:
+
+python
+class Gato(Animal):
+    def hacer_sonido(self):
+        print("El gato maúlla.")
+
+class Pato(Animal):
+    def hacer_sonido(self):
+        print("El pato grazna.")
+
+# Polimorfismo: Cada clase tiene su propia implementación del método:
+animales = [Gato(), Pato(), Perro()]
+for animal in animales:
+    animal.hacer_sonido()
+Resultado:
+
+El gato maúlla.
+El pato grazna.
+El perro ladra.

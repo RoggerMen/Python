@@ -1,0 +1,17 @@
+3. Herencia
+
+La herencia permite crear una nueva clase a partir de una clase existente. Esto promueve la reutilización de código y permite a la clase hija (subclase) heredar los atributos y métodos de la clase padre (superclase). Además, la subclase puede sobrescribir los métodos si es necesario.
+
+Ejemplo:
+
+python
+class Animal:
+    def hacer_sonido(self):
+        print("El animal hace un sonido.")
+
+class Perro(Animal):  # Hereda de Animal
+    def hacer_sonido(self):  # Sobrescribe el método
+        print("El perro ladra.")
+
+perro = Perro()
+perro.hacer_sonido()  # Resultado: El perro ladra.
