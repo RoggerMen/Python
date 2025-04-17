@@ -1,0 +1,14 @@
+🟢 Definiciones rápidas de los términos estadísticos
+
+Media: Promedio aritmético de un conjunto de datos. Se calcula sumando todos los valores y dividiendo por el número total de valores.
+
+Mediana: Valor central de un conjunto de datos ordenado. Si el número de datos es impar, es el valor del medio; si es par, es el promedio de los dos valores centrales.
+
+Moda: Valor que ocurre con mayor frecuencia en un conjunto de datos. Puede haber más de una moda (multimodal) o ninguna si todos los valores tienen la misma frecuencia.
+
+Desviación estándar: Medida de la dispersión de un conjunto de datos respecto a la media. Es la raíz cuadrada de la varianza y proporciona una medida de cuánto se desvían los datos en promedio de la media.
+
+Varianza: Promedio de las desviaciones al cuadrado de cada valor respecto a la media. Es una medida de la dispersión de los datos. También es el cuadrado de la desviación estándar.
+
+Rango: Diferencia entre el valor máximo y el valor mínimo en un conjunto de datos. Mide la extensión total de los valores.
+
